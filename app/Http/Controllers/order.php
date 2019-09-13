@@ -20,7 +20,16 @@ class order extends Controller
         $wee = DB::table('order')->where('customer_id','=',  auth()->user()->id)->get();
      //   return modelorder::all();
         
-        return view('piutang',compact('wee'));  //
+        return view('pages.piutang_BUP',compact('wee'));  //
+    }
+
+    public function tes()
+    {
+        return view('pages.icons');
+    }
+    public function baru()
+    {
+        return view('pages.ordersekarang');
     }
 
     /**

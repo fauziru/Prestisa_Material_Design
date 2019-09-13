@@ -15,11 +15,30 @@ class purchase_order extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {$history = DB::table('order')->where('customer_id','=',  auth()->user()->id)->join('purchase_order','order.id','=','purchase_order.order_id')->select('purchase_order.*','order.order_number')->get();
-         
-        return view('riwayat',compact('history')); //
+    {    
+        return view('pages.riwayat');   
+        //
     }
 
+    public function card_C(Request $req)
+    {
+        $data_po = DB::table('order')->where('customer_id','=',  auth()->user()->id)->join('purchase_order','order.id','=','purchase_order.order_id')->select('purchase_order.*','order.order_number')->paginate(6); 
+        if ($req->ajax()) {
+           $view = view('components.card_po', compact('data_po'))->render();
+           return response()->json(['html'=>$view]);
+        }
+        //return response()->json($data);
+        //return view('pages.tes',compact('data_po'));
+        //
+    }
+    
+    public function detail($id)
+    {
+        $detail = DB::table('order')->where('customer_id','=',  auth()->user()->id)->join('purchase_order','order.id','=','purchase_order.order_id')->select('purchase_order.*','order.order_number')->where('purchase_order.id','=',$id)->get(); 
+        //return view('pages.riwayat',compact('history'));
+        return response()->json($detail);
+        //
+    }
     /**
      * Show the form for creating a new resource.
      *
