@@ -1,14 +1,14 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
-  <div class="container-fluid" style="position:fixed">
+<nav class="navbar fixed-top navbar-expand-lg bg-primary">
+  <div class="container-fluid">
     <div class="navbar-wrapper">
-      <a class="navbar-brand" href="#"></a>
+      <a class="navbar-brand" href="#">Prestisa.com</a>
     </div>
-    <button class="navbar-toggler"  type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" >
+    <button class="navbar-toggler" style="background-color: #fff;"  type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" >
     <span class="sr-only">Toggle navigation</span>
-    <span class="navbar-toggler-icon icon-bar"></span>
-    <span class="navbar-toggler-icon icon-bar"></span>
-    <span class="navbar-toggler-icon icon-bar"></span>
+    <span class="navbar-toggler-icon icon-bar" ></span>
+    <span class="navbar-toggler-icon icon-bar" ></span>
+    <span class="navbar-toggler-icon icon-bar" ></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end">
       <form class="navbar-form">
@@ -21,11 +21,11 @@
         </div>
       </form>
       <ul class="navbar-nav">
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a class="nav-link" href="{{ route('home') }}">
             <i class="material-icons">dashboard</i>
             <p class="d-lg-none d-md-block">
-              {{ __('Stats') }}
+              {{ __('Home') }}
             </p>
           </a>
         </li>
@@ -58,7 +58,7 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Log out') }}</a>
           </div>
-        </li>
+        </li>-->
       </ul>
     </div>
   </div>
