@@ -16,6 +16,67 @@
     <link href="{{ asset('material') }}/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('material') }}/demo/demo.css" rel="stylesheet" />
+    <link  href="https://cdn.datatables.net/1.10.19/css/dataTables.material.min.css" rel="stylesheet">
+    <style type="text/css">
+        .content{
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+        }
+        .icon{
+            width: 3em;
+        }
+        #loader {
+          align-items: center;
+        }
+        #loader-dc {
+          position: relative;
+          left: 50%;
+          margin-left: -15px;
+          z-index: 1;
+          width: 30px;
+          height: 30px;
+          border: 1px solid #9c27b05c;
+          border-radius: 50%;
+          width: 30px;
+          border-top: 5px solid #59e239b0;
+          height: 30px;
+          -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+        }
+
+        @-webkit-keyframes spin {
+          0% { -webkit-transform: rotate(0deg); }
+          100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        .garis{
+          display: block;
+          background-color: #8b748e;
+          height: 1px;
+          margin-block-end: 3%;
+        }
+        div .loader.menu-bar{
+            margin-left: 47.5%;
+        }
+        .hml{
+            margin-top: 0px !important;
+        }
+        .garis-v{
+            margin-left: 10px;
+            margin-bottom: 0px;
+            margin-right: 10px;
+            margin-block-start: 3px;
+            margin-block-end: 3px;
+            display: block;
+            border: 1px solid rgba(187, 187, 187, 0.72);
+        }
+    </style>
+    @stack('cssscope')
+
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -28,74 +89,7 @@
             @include('layouts.page_templates.guest')
         @endguest
         
-        <div class="fixed-plugin">
-          <div class="dropdown show-dropdown">
-            <a href="#" data-toggle="dropdown">
-              <i class="fa fa-cog fa-2x"> </i>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header-title"> Sidebar Filters</li>
-              <li class="adjustments-line">
-                <a href="javascript:void(0)" class="switch-trigger active-color">
-                  <div class="badge-colors ml-auto mr-auto">
-                    <span class="badge filter badge-purple " data-color="purple"></span>
-                    <span class="badge filter badge-azure" data-color="azure"></span>
-                    <span class="badge filter badge-green" data-color="green"></span>
-                    <span class="badge filter badge-warning active" data-color="orange"></span>
-                    <span class="badge filter badge-danger" data-color="danger"></span>
-                    <span class="badge filter badge-rose" data-color="rose"></span>
-                  </div>
-                  <div class="clearfix"></div>
-                </a>
-              </li>
-              <li class="header-title">Images</li>
-              <li class="active">
-                <a class="img-holder switch-trigger" href="javascript:void(0)">
-                  <img src="{{ asset('material') }}/img/sidebar-1.jpg" alt="">
-                </a>
-              </li>
-              <li>
-                <a class="img-holder switch-trigger" href="javascript:void(0)">
-                  <img src="{{ asset('material') }}/img/sidebar-2.jpg" alt="">
-                </a>
-              </li>
-              <li>
-                <a class="img-holder switch-trigger" href="javascript:void(0)">
-                  <img src="{{ asset('material') }}/img/sidebar-3.jpg" alt="">
-                </a>
-              </li>
-              <li>
-                <a class="img-holder switch-trigger" href="javascript:void(0)">
-                  <img src="{{ asset('material') }}/img/sidebar-4.jpg" alt="">
-                </a>
-              </li>
-              <li class="button-container">
-                <a href="https://www.creative-tim.com/product/material-dashboard-laravel" target="_blank" class="btn btn-primary btn-block">Free Download</a>
-              </li>
-              <!-- <li class="header-title">Want more components?</li>
-                  <li class="button-container">
-                      <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">
-                        Get the pro version
-                      </a>
-                  </li> -->
-              <li class="button-container">
-                <a href="https://material-dashboard-laravel.creative-tim.com/docs/getting-started/laravel-setup.html" target="_blank" class="btn btn-default btn-block">
-                  View Documentation
-                </a>
-              </li>
-              <li class="button-container github-star">
-                <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard-laravel" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-              </li>
-              <li class="header-title">Thank you for 95 shares!</li>
-              <li class="button-container text-center">
-                <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
-                <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
-                <br>
-                <br>
-              </li>
-            </ul>
-          </div>
-        </div>
+        
         <!--   Core JS Files   -->
         <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
         <script src="{{ asset('material') }}/js/core/popper.min.js"></script>
@@ -109,13 +103,13 @@
         <script src="{{ asset('material') }}/js/plugins/jquery.validate.min.js"></script>
         <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
         <script src="{{ asset('material') }}/js/plugins/jquery.bootstrap-wizard.js"></script>
-        <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+        <!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
         <script src="{{ asset('material') }}/js/plugins/bootstrap-selectpicker.js"></script>
         <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
         <script src="{{ asset('material') }}/js/plugins/bootstrap-datetimepicker.min.js"></script>
         <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
         <script src="{{ asset('material') }}/js/plugins/jquery.dataTables.min.js"></script>
-        <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+        <!--  Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
         <script src="{{ asset('material') }}/js/plugins/bootstrap-tagsinput.js"></script>
         <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
         <script src="{{ asset('material') }}/js/plugins/jasny-bootstrap.min.js"></script>
@@ -130,7 +124,7 @@
         <!-- Library for adding dinamically elements -->
         <script src="{{ asset('material') }}/js/plugins/arrive.min.js"></script>
         <!--  Google Maps Plugin    -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE'"></script>
+        <!--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE'"></script>-->
         <!-- Chartist JS -->
         <script src="{{ asset('material') }}/js/plugins/chartist.min.js"></script>
         <!--  Notifications Plugin    -->
